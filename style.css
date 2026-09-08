@@ -1,0 +1,178 @@
+/* ===========================================================
+   style.css — thème "vieil internet / imageboard"
+   Palette : verts façon vieux forums, liens bleus classiques
+   =========================================================== */
+
+:root {
+  --bg-page: #d8ecd6;
+  --bar-main: #a9dfa4;
+  --bar-sub: #7fae7f;
+  --panel-bg: #ffffff;
+  --panel-border: #1a1a1a;
+  --link-color: #0000ee;
+  --link-visited: #551a8b;
+  --text-color: #1a1a1a;
+  --logo-color: #142a6b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-page);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--panel-bg);
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  min-height: 100vh;
+}
+
+/* ---------- header / logo ---------- */
+.site-header {
+  background: var(--bar-main);
+  border-bottom: 2px solid #000;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-header .logo { display: block; }
+
+.site-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 26px;
+  color: var(--logo-color);
+  letter-spacing: 0.5px;
+}
+
+.site-tagline {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #333;
+}
+
+/* ---------- nav (boutons images) ---------- */
+.main-nav {
+  background: var(--bar-sub);
+  border-bottom: 2px solid #000;
+  padding: 4px 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.main-nav a { line-height: 0; }
+.main-nav img { display: block; image-rendering: pixelated; }
+.main-nav a:hover img { filter: brightness(1.08); }
+
+/* bandeau d'annonce défilant, clin d'oeil vieil internet */
+.ticker-bar {
+  background: #eef8ec;
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 3px 0;
+}
+
+.ticker-bar span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker 18s linear infinite;
+  font-size: 12px;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ---------- contenu ---------- */
+.content {
+  padding: 16px;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--panel-border);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+a { color: var(--link-color); }
+a:visited { color: var(--link-visited); }
+
+.news-list { list-style: none; padding: 0; margin: 0; }
+.news-list li { padding: 4px 0; border-bottom: 1px dashed #ccc; }
+.news-list .date { font-weight: bold; color: var(--logo-color); margin-right: 6px; }
+
+/* ---------- galerie (page dessin) ---------- */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.gallery-item {
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.gallery-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid #000;
+  display: block;
+}
+
+.gallery-item .caption {
+  display: block;
+  font-size: 11px;
+  margin-top: 3px;
+  color: var(--text-color);
+}
+
+/* ---------- contact ---------- */
+.contact-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  background: var(--bar-sub);
+  border-top: 2px solid #000;
+  padding: 8px 14px;
+  font-size: 11px;
+  color: #111;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+@media (max-width: 600px) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  .site-footer { flex-direction: column; }
+}
